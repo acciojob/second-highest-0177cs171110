@@ -14,16 +14,21 @@
         return -Infinity;
     }
 
-    // Sort the array in descending order
-    arr.sort((a, b) => b - a);
+    let highest = -Infinity;
+    let secondHighest = -Infinity;
 
-    // Find the second-highest element
-    let secondHighest = arr[0];
-    for (let i = 1; i < arr.length; i++) {
-        if (arr[i] < secondHighest) {
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] > highest) {
+            secondHighest = highest;
+            highest = arr[i];
+        } else if (arr[i] < highest && arr[i] > secondHighest) {
             secondHighest = arr[i];
-            break;
         }
+    }
+
+    // If all elements are the same, return -Infinity
+    if (secondHighest === highest || secondHighest === -Infinity) {
+        return -Infinity;
     }
 
     return secondHighest;
