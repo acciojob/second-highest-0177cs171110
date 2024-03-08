@@ -10,7 +10,23 @@
 	<script>
 		function secondHighest(arr) {
 			//Write your code here
-			
+			if (arr.length <= 1) {
+        return -Infinity;
+    }
+
+    // Sort the array in descending order
+    arr.sort((a, b) => b - a);
+
+    // Find the second-highest element
+    let secondHighest = arr[0];
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] < secondHighest) {
+            secondHighest = arr[i];
+            break;
+        }
+    }
+
+    return secondHighest;
 		}
 
 		function Main() {
